@@ -1,0 +1,21 @@
+name: Test step skip
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Print something
+        run: echo "Hey! I am for job1"
+  
+  job2:
+    if: false 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Print something
+        run: echo "Hey! I am for job2"
