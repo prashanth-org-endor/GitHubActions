@@ -1,0 +1,14 @@
+name: Test step skip
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/go/**
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print something
+        run: echo "This gets printed only when there is change in go files."
