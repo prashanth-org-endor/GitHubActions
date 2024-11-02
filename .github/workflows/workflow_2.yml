@@ -1,0 +1,19 @@
+name: Workflow 2
+run-name: Running Workflow 2
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - src/go/**
+
+jobs:
+  workflow_2_job_1:
+    name: Workflow 2 - Job 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print statements
+        run: |
+          echo "This job runs when PR is sent to main branch"
+          echo "Also, this job runs only when there are changes in src/go files."

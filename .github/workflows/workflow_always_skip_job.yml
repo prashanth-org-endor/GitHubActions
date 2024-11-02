@@ -1,4 +1,6 @@
-name: Test step skip
+name: Workflow - Skipping a job using conditional
+run-name: Running Workflow that always skips a job
+
 on:
   workflow_dispatch:
 
@@ -9,7 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Print something
-        run: echo "Hey! I am for job1"
+        run: echo "Hey! I am from job1"
   
   job2:
     if: false 
@@ -18,4 +20,4 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Print something
-        run: echo "Hey! I am for job2"
+        run: echo "Hey! I am from job2"
