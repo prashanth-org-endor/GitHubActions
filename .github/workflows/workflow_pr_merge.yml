@@ -2,9 +2,9 @@ name: Workflow 1
 run-name: Running Workflow 1
 
 on:
-  push:
+  pull_request:
     branches:
-      - pa/pr_merge
+      - main
 
 jobs:
   workflow_1_job_1:
