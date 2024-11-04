@@ -1,5 +1,5 @@
 name: Workflow 1
-run-name: Runs only wqhen MR is merged to main
+run-name: Runs only when MR is merged to main
 
 on:
   pull_request:
@@ -13,12 +13,15 @@ jobs:
     steps:
         - name: Print statements
           env:
-            PR_NUMBER: ${{ github.event.number }}
+            GH_EVENT_NUMBER: ${{ github.event.number }}
+            GH_ACTION: ${{ github.action }}
+            GH_EVENT_NAME: ${{ github.event.name }}
           run: |
             echo "This job runs when PR is sent to main branch"
             echo "Also, this job runs only when there are changes in src/python files."   
-            echo $PR_NUMBER
-            echo $GITHUB_CONTEXT
+            echo $GH_EVENT_NUMBER
+            echo $GH_ACTION
+            echo $GH_EVENT_NAME
 
       # Keep this for some reference
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
