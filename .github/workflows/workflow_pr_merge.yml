@@ -17,15 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: Set ENV
-          run: GH_PR_URL=$( echo $GH_REPO_URL | sed 's/git:/https:/;s/\.git//' )/pull/$GH_EVENT_NUMBER
           env:
             GH_EVENT_NUMBER: ${{ github.event.number }}
             GH_REPO_URL: ${{ github.repositoryUrl }}
+          run: echo "GH_PR_URL=$( echo $GH_REPO_URL | sed 's/git:/https:/;s/\.git//' )/pull/$GH_EVENT_NUMBER" >> $GITHUB_ENV
         - name: Print statements
           run: |
             echo "This job runs when PR is sent to main branch"
             echo "Also, this job runs only when there are changes in src/python files."   
             echo $GH_PR_URL
+            echo ${{ env.GH_PR_URL }}
 
       # Keep this for some reference
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
