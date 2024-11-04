@@ -3,10 +3,12 @@ run-name: Runs only when MR is merged to main
 
 on:
   pull_request:
+    types:
+        - closed
     branches:
-      - main
+        - main
     paths:
-    - .github/workflows/**
+        - .github/workflows/**
 
 jobs:
   workflow_1_job_1:
@@ -26,7 +28,7 @@ jobs:
             echo $GH_ACTION
             echo $GH_EVENT_NAME
             echo $GITHUB_REF
-            echo GH_PR_MERGED
+            echo $GH_PR_MERGED
 
       # Keep this for some reference
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
