@@ -1,5 +1,5 @@
-name: Workflow 1
-run-name: Runs only when MR is merged to main
+name: Workflow -> PR Merged & Closed -> Conditional Paths
+run-name: Runs only when PR is merged to main with changes in docs/**
 
 on:
   pull_request:
