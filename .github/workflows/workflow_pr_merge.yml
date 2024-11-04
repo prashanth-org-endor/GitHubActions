@@ -15,7 +15,7 @@ jobs:
           env:
             GH_EVENT_NUMBER: ${{ github.event.number }}
             GH_ACTION: ${{ github.action }}
-            GH_EVENT_NAME: ${{ github.event.name }}
+            GH_EVENT_NAME: ${{ github.event_name }}
           run: |
             echo "This job runs when PR is sent to main branch"
             echo "Also, this job runs only when there are changes in src/python files."   
