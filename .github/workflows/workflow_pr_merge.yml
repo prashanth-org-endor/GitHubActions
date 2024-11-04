@@ -14,6 +14,7 @@ jobs:
       - name: Print statements
         env:
             PR_NUMBER: ${{ github.event.number }}
+            PR: ${{ github.event }}
         run: |
           echo "This job runs when PR is sent to main branch"
           echo "Also, this job runs only when there are changes in src/python files."   
