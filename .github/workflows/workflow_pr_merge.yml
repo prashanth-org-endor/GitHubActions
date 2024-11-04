@@ -1,24 +1,32 @@
 name: Workflow 1
-run-name: Runs only wqhen MR is merged to main
+run-name: Runs only when MR is merged to main
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+    paths:
+    - .github/workflows/**
 
 jobs:
   workflow_1_job_1:
     name: Workflow 1 - Job 1
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
         - name: Print statements
           env:
-            PR_NUMBER: ${{ github.event.number }}
+            GH_EVENT_NUMBER: ${{ github.event.number }}
+            GH_ACTION: ${{ github.action }}
+            GH_EVENT_NAME: ${{ github.event_name }}
+            GH_PR_MERGED: ${{ github.event.pull_request.merged }}
           run: |
             echo "This job runs when PR is sent to main branch"
             echo "Also, this job runs only when there are changes in src/python files."   
-            echo $PR_NUMBER
+            echo $GH_EVENT_NUMBER
+            echo $GH_ACTION
+            echo $GH_EVENT_NAME
+            echo $GITHUB_REF
+            echo GH_PR_MERGED
 
       # Keep this for some reference
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
