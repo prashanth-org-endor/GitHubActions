@@ -4,6 +4,7 @@ run-name: Runs only when PR is merged to main with changes in docs/**
 on:
   pull_request:
     types:
+        - opened
         - closed
     branches:
         - main
@@ -21,13 +22,14 @@ jobs:
             GH_EVENT_NUMBER: ${{ github.event.number }}
             GH_EVENT_NAME: ${{ github.event_name }}
             GH_PR_MERGED: ${{ github.event.pull_request.merged }}
+            GH_REPO_URL: ${{ github.repositoryUrl }}
           run: |
             echo "This job runs when PR is sent to main branch"
             echo "Also, this job runs only when there are changes in src/python files."   
             echo $GH_EVENT_NUMBER
             echo $GH_EVENT_NAME
             echo $GITHUB_REF
-            echo $GH_PR_MERGED
+            echo $( echo $GH_REPO_URL | sed 's/git:/https:/;s/.git//g' )/pull/$GH_EVENT_NUMBER
 
       # Keep this for some reference
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
