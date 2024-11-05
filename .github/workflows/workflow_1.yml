@@ -5,8 +5,8 @@ on:
   pull_request:
     branches:
       - main
-    # paths:
-    #   - src/python/**
+    paths:
+      - src/python/**
 
 jobs:
   workflow_1_job_1:
