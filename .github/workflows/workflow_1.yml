@@ -16,9 +16,8 @@ jobs:
       - name: Print statements
         run: |
           echo "This job runs when PR is sent to main branch"
-          echo "Also, this job runs only when there are changes in src/python files."
-          exit 1   
-
+          echo "Also, this job runs only when there are changes in src/python files."   
+        
       # Keep this for some reference
       # - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       # - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
